@@ -10,8 +10,9 @@ The application loads the parameters from a `config.properties` file. The accept
 - `app.grid-height`
 - `app.begin-burning-cells` (for example: `1,1;3,3;5,5`)
 - `app.spread-probability`
+- `app.simulation-step-delay-ms` (for example: `600`)
 
-A sample file is already present at the project root and in `src/main/resources/config.properties`.
+A sample file is already present at the project root.
 
 ## Run
 

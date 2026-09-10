@@ -19,12 +19,14 @@ class ConfigLoaderTest {
         properties.setProperty("app.grid-height", "5");
         properties.setProperty("app.begin-burning-cells", "0,0;2,3");
         properties.setProperty("app.spread-probability", "0.75");
+        properties.setProperty("app.simulation-step-delay-ms", "250");
 
         SimulationParameters parameters = SimulationParameters.fromProperties(properties);
 
         assertEquals(7, parameters.width());
         assertEquals(5, parameters.height());
         assertEquals(0.75, parameters.spreadProbability());
+        assertEquals(250, parameters.simulationStepDelayMs());
         assertEquals(2, parameters.initialBurningCells().size());
         assertTrue(parameters.initialBurningCells().contains(new Position(0, 0)));
         assertTrue(parameters.initialBurningCells().contains(new Position(2, 3)));
@@ -37,6 +39,7 @@ class ConfigLoaderTest {
         assertEquals(10, parameters.width());
         assertEquals(10, parameters.height());
         assertEquals(0.6, parameters.spreadProbability());
+        assertEquals(600, parameters.simulationStepDelayMs());
         assertEquals(3, parameters.initialBurningCells().size());
     }
 }

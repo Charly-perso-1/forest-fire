@@ -10,11 +10,13 @@ import javafx.util.Duration;
 public class SimulationController {
     private final ForestFireModel model;
     private final ForestFireView view;
+    private final int simulationStepDelayMs;
     private Timeline simulationTimeline;
 
-    public SimulationController(ForestFireModel model, ForestFireView view) {
+    public SimulationController(ForestFireModel model, ForestFireView view, int simulationStepDelayMs) {
         this.model = model;
         this.view = view;
+        this.simulationStepDelayMs = simulationStepDelayMs;
     }
 
     public void initialize() {
@@ -37,7 +39,7 @@ public class SimulationController {
             return;
         }
 
-        simulationTimeline = new Timeline(new KeyFrame(Duration.millis(600), event -> {
+        simulationTimeline = new Timeline(new KeyFrame(Duration.millis(simulationStepDelayMs), event -> {
             if (model.isComplete()) {
                 stopAutomaticSimulation();
                 return;
