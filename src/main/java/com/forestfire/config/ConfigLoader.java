@@ -25,14 +25,6 @@ public final class ConfigLoader {
             }
         }
 
-        Path resourcePath = Path.of("src", "main", "resources", CONFIG_FILE_NAME);
-        if (Files.exists(resourcePath)) {
-            try (InputStream inputStream = Files.newInputStream(resourcePath)) {
-                properties.load(inputStream);
-                return SimulationParameters.fromProperties(properties);
-            }
-        }
-
         try (InputStream inputStream = ConfigLoader.class.getClassLoader().getResourceAsStream(CONFIG_FILE_NAME)) {
             if (inputStream == null) {
                 throw new IOException("Configuration file '" + CONFIG_FILE_NAME + "' was not found.");
