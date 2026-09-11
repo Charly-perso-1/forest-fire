@@ -109,15 +109,6 @@ public class ForestFireModel {
         return !hasBurningCells();
     }
 
-    public CellState[][] copyGrid() {
-        CellState[][] copy = new CellState[height][];
-        for (int row = 0; row < height; row++) {
-            copy[row] = new CellState[width];
-            System.arraycopy(grid[row], 0, copy[row], 0, width);
-        }
-        return copy;
-    }
-
     private Set<Position> findNeighbors(int row, int column) {
         Set<Position> neighbors = new HashSet<>();
         int[] rowOffsets = {-1, 0, 1, 0};
